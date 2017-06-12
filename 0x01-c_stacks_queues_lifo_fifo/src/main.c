@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
       return (EXIT_FAILURE);
     }
 
-  fp = fopen(argv[0], "r");
+  fp = fopen(argv[1], "r");
   if (fp == NULL)
     {
       printf("Error: Can't open file %s\n", argv[0]);

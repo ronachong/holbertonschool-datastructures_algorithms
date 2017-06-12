@@ -14,7 +14,7 @@ int parse(FILE *fp)
     {
       printf("%s", lbuff);
       sscanf(lbuff, "%s", wbuff);
-      
+
       if (strcmp(wbuff, "push") == 0)
       	{
       	  ;

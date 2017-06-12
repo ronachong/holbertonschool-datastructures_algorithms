@@ -5,7 +5,7 @@
 int main(int argc, char *argv[])
 {
   FILE *fp;
-  argv++;
+  int fret;
 
   if (argc != 2)
     {
@@ -20,9 +20,13 @@ int main(int argc, char *argv[])
       return (EXIT_FAILURE);
     }
   printf("fp is %p\n", (void *) fp);
-  parse(fp);
+  /* if (parse(fp) == EXIT_FAILURE) */
+  /*   return (EXIT_FAILURE); */
+  fret = parse(fp);
   fclose(fp);
 
+  if (fret != 0)
+    return (EXIT_FAILURE);
   printf("ran to completion\n");
   return (EXIT_SUCCESS);
 }

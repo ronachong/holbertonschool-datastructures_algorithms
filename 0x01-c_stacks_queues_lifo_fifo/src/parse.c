@@ -4,13 +4,15 @@
 
 int parse(FILE *fp)
 {
-  char buff[NCHARS];
+  char lbuff[NCHARS];
+  char wbuff[NCHARS];
 
   printf("in parse, using %p\n", (void *) fp);
-  while (fgets (buff, NCHARS, fp))
+  while (fgets (lbuff, NCHARS, fp))
     {
-      printf("%s", buff);
-      printf("\n\n");
+      printf("%s", lbuff);
+      sscanf(lbuff, "%s", wbuff);
+      printf("first word?: %s\n", wbuff);
     }
   return (0);
 }

@@ -14,30 +14,45 @@ int jump_search(int *array, size_t size, int value)
 	unsigned int i;
 	unsigned int j;
 	unsigned int k; /* jump step size */
-	unsigned int l;
 
 	k = sqrt(size);
+	i = 0;
 
-	/* jump */
-	for (i = k, j = 0; i < size && array; i += k)
+	while (i < size && array)
 	{
-		if (array[i] > value)
-		{
-			printf("Value found between indexes [%i] and [%i]\n", j, i);
-			/* check values */
-			for (l = j; l < i; l++)
-			{
-				printf("Value checked array[%i] = [%i]\n", l, array[l]);
-				if (array[l] == value)
-					return (l);
-			}
-
-			/* no matching value found: */
-			break;
-		}
-		else if (array[i] == value)
+		printf("Value checked array[%i] = [%i]\n", i, array[i]);
+		if (array[i] == value)
 			return (i);
+
+		j = i;
+		i += k;
+
+		if (i > size)
+		{
+			printf("um\n");
+			return (check_values(array, value, size - 1, j));
+		}
+		if (array[i] > value)
+			return (check_values(array, value, i, j));
 	}
 
 	return (-1);
+}
+
+int check_values(int *array, int value, int i, int j)
+{
+	int l;
+
+	printf("Value found between indexes [%i] and [%i]\n", j, i);
+	/* check values */
+	for (l = j; l < i; l++)
+	{
+		printf("Value checked array[%i] = [%i]\n", l, array[l]);
+		if (array[l] == value)
+			return (l);
+	}
+
+	/* no matching value found: */
+	return (-1);
+
 }

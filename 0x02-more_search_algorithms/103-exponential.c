@@ -24,10 +24,56 @@ int exponential_search(int *array, size_t size, int value)
 		u_bound *= 2;
 	}
 
-	l_bound = u_bound/2;
+	l_bound = u_bound/2; /* add + 1 optimize,
+				but it won't match req'd algo */
 	u_bound = (u_bound < size) ? u_bound:size - 1;
 	printf("Value found between indexes [%i] and [%i]\n", l_bound, u_bound);
-	printf("Should do search now.\n");
+	return binary_search(array, l_bound, u_bound, value);
+}
 
+/**
+ * binary_search - searches subarray of array for value in binary fashion
+ * @array: pointer to the first element in sorted, ascending int array
+ * @start: start index for subarray
+ * @end: end index for subarray
+ * @value: the value to search for
+ *
+ * Return: the index where value is located, or -1 if the value is present
+ * in the array, or if the array is NULL.
+ */
+int binary_search(int *array, int start, int end, int value)
+{
+	int prb;
+	
+	while (start != end)
+	{
+		print_search(array, start, end);
+		prb = start + (end - start)/2;
+		if (array[prb] == value)
+			return (prb);
+		if (array[prb] < value)
+			start = prb + 1;
+		else
+			end = prb - 1;
+	}
 	return (-1);
+}
+
+
+/**
+ * print_search - print subarray of array being searched
+ * @array: pointer to the first element in sorted, ascending array of ints
+ * @start: start index for subarray
+ * @end: end index for subarray
+ */
+void print_search(int *array, int start, int end)
+{
+	int j;
+
+	printf("Searching in array: ");
+	for (j = start; j < end; j++)
+	{
+		printf("%i, ", array[j]);
+	}
+	printf("%i\n", array[j]);
 }

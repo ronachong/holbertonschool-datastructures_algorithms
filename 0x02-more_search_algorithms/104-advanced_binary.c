@@ -50,7 +50,7 @@ int adv_binary_search(int *array, int start, int end, int value)
 	if (array[prb] < value)
 		start = prb + 1;
 	else
-		end = prb - 1;
+		end = prb;
 
 	return (adv_binary_search(array, start, end, value));
 }

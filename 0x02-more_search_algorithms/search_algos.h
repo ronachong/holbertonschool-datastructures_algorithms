@@ -12,5 +12,4 @@ int binary_search(int *array, int start, int end, int value);
 void print_search(int *array, int start, int end);
 int advanced_binary(int *array, size_t size, int value);
 int adv_binary_search(int *array, int start, int end, int value);
-int find_first_i(int *array, int i, int value);
 #endif

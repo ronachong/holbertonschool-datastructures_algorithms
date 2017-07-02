@@ -40,8 +40,9 @@ int adv_binary_search(int *array, int start, int end, int value)
 	prb = start + (end - start)/2;
 	print_search(array, start, end);
 
-	if (array[prb] == value)
-		return find_first_i(array, prb, value);
+	if (array[prb] == value &&
+	    (prb == start || array[prb - 1] != value))
+	    return (prb);
 
 	if (start == end)
 		return (-1);
@@ -52,22 +53,6 @@ int adv_binary_search(int *array, int start, int end, int value)
 		end = prb - 1;
 
 	return (adv_binary_search(array, start, end, value));
-}
-
-/**
- * find_first_i - finds first index matching value in array
- * @array - pointer to first element in int array
- * @i - index in array with value matching @value
- * @value - value being searched for
- */
-int find_first_i(int *array, int i, int value)
-{
-	if (i == 0 ||
-	    array[i - 1] != value)
-		return (i);
-
-	i -= 1;
-	return (find_first_i(array, i, value));
 }
 
 /**

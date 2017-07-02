@@ -52,6 +52,12 @@ int binary_search(int *array, int start, int end, int value)
 	/*     array[size - 1] < value || */
 	/*     array[0] > value ) */
 	/* 	return (-1); */
+	/* to match task more closely,
+	   I need to allow search to continue to last or first
+	   index, then break. for some reason search for 0 in
+	   array without 0 doesn't end up breaking without
+	   additional conditionals.
+	*/
 
 	while (true)
 	{

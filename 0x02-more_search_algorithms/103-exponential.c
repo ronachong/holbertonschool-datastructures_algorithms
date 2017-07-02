@@ -14,7 +14,9 @@ int exponential_search(int *array, size_t size, int value)
 	unsigned int u_bound;
 	unsigned int l_bound;
 	
-	if (array == NULL || array[size - 1] < value)
+	if (array == NULL ||
+	    array[size - 1] < value ||
+	    array[0] > value )
 		return (-1);
 
 	u_bound = 1;
@@ -45,12 +47,20 @@ int binary_search(int *array, int start, int end, int value)
 {
 	int prb;
 	
-	while (start != end)
+	/* check commented out bc already implemented in exp search */
+	/* if (array == NULL || */
+	/*     array[size - 1] < value || */
+	/*     array[0] > value ) */
+	/* 	return (-1); */
+
+	while (true)
 	{
 		print_search(array, start, end);
 		prb = start + (end - start)/2;
 		if (array[prb] == value)
 			return (prb);
+		if (start == end)
+			break;
 		if (array[prb] < value)
 			start = prb + 1;
 		else

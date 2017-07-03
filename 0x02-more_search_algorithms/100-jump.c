@@ -28,10 +28,8 @@ int jump_search(int *array, size_t size, int value)
 		i += k;
 
 		if (i > size)
-		{
-			printf("um\n");
 			return (check_values(array, value, size - 1, j));
-		}
+
 		if (array[i] > value)
 			return (check_values(array, value, i, j));
 	}
